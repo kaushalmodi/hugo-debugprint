@@ -1,0 +1,12 @@
+This is not a standalone theme. This is a Hugo theme component.
+
+To use this:
+
+1. Clone this repo to ~your-site/themes/hugo-debugprint~ directory.
+2. Add "hugo-debugprint" as the left-most element of the ~theme~ list variable
+   in your site's or theme's ~config.toml~. Example:
+   #+begin_example
+   theme = ["hugo-debugprint", "my-theme"]
+   #+end_example
+
+*Requires Hugo 0.42.*

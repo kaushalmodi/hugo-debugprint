@@ -143,15 +143,15 @@
                 {{ else }}
                     {{ printf `<tr><td class="key">PrevPage</td><td class="value">None</td></tr>` | safeHTML }}
                 {{ end }}
-                {{ with .NextPageInSection }}
-                    {{ printf `<tr><td class="key">NextPageInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+                {{ with .NextInSection }}
+                    {{ printf `<tr><td class="key">NextInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
                 {{ else }}
-                    {{ printf `<tr><td class="key">NextPageInSection</td><td class="value">None</td></tr>` | safeHTML }}
+                    {{ printf `<tr><td class="key">NextInSection</td><td class="value">None</td></tr>` | safeHTML }}
                 {{ end }}
-                {{ with .PrevPageInSection }}
-                    {{ printf `<tr><td class="key">PrevPageInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+                {{ with .PrevInSection }}
+                    {{ printf `<tr><td class="key">PrevInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
                 {{ else }}
-                    {{ printf `<tr><td class="key">PrevPageInSection</td><td class="value">None</td></tr>` | safeHTML }}
+                    {{ printf `<tr><td class="key">PrevInSection</td><td class="value">None</td></tr>` | safeHTML }}
                 {{ end }}
             </table>
         {{ else if $typeIsMenuEntry }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/menu.go -->

@@ -133,25 +133,25 @@
                     {{ partial "debugprint.html" (index $PageVarSymbols $idx) }} <!-- Recursive call FTW! -->
                     {{ printf "</td></tr>" | safeHTML }}
                 {{ end }}
-                {{ with .Next }}
-                    {{ printf `<tr><td class="key">Next</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+                {{ with .NextPage }}
+                    {{ printf `<tr><td class="key">NextPage</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
                 {{ else }}
-                    {{ printf `<tr><td class="key">Next</td><td class="value">None</td></tr>` | safeHTML }}
+                    {{ printf `<tr><td class="key">NextPage</td><td class="value">None</td></tr>` | safeHTML }}
                 {{ end }}
-                {{ with .Prev }}
-                    {{ printf `<tr><td class="key">Prev</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+                {{ with .PrevPage }}
+                    {{ printf `<tr><td class="key">PrevPage</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
                 {{ else }}
-                    {{ printf `<tr><td class="key">Prev</td><td class="value">None</td></tr>` | safeHTML }}
+                    {{ printf `<tr><td class="key">PrevPage</td><td class="value">None</td></tr>` | safeHTML }}
                 {{ end }}
-                {{ with .NextInSection }}
-                    {{ printf `<tr><td class="key">NextInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+                {{ with .NextPageInSection }}
+                    {{ printf `<tr><td class="key">NextPageInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
                 {{ else }}
-                    {{ printf `<tr><td class="key">NextInSection</td><td class="value">None</td></tr>` | safeHTML }}
+                    {{ printf `<tr><td class="key">NextPageInSection</td><td class="value">None</td></tr>` | safeHTML }}
                 {{ end }}
-                {{ with .PrevInSection }}
-                    {{ printf `<tr><td class="key">PrevInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
+                {{ with .PrevPageInSection }}
+                    {{ printf `<tr><td class="key">PrevPageInSection</td><td class="value"><a href="%s">%s</a></td></tr>` .Permalink .Title | safeHTML }}
                 {{ else }}
-                    {{ printf `<tr><td class="key">PrevInSection</td><td class="value">None</td></tr>` | safeHTML }}
+                    {{ printf `<tr><td class="key">PrevPageInSection</td><td class="value">None</td></tr>` | safeHTML }}
                 {{ end }}
             </table>
         {{ else if $typeIsMenuEntry }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/menu.go -->

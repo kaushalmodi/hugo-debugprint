@@ -5,7 +5,7 @@ description = "Hugo theme component with the 'debugprint' partial to aid with Hu
 homepage = "https://hugo-bare-min.netlify.com/"
 tags = ["component", "debug", "debugprint", "devel"]
 features = ["debug"]
-min_version = "0.50"
+min_version = "0.53"
 
 [author]
   name = "Kaushal Modi"

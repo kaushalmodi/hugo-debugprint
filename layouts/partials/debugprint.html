@@ -30,7 +30,7 @@
 {{ $typeIsGitInfo              := (findRE "^.*gitmap\\.GitInfo" $type) }}
 {{ $typeIsOutputFormat         := (eq "output.Format" $type) }}
 {{ $typeIsResource             := (findRE "^\\*resource" $type) }}
-{{ $typeIsPage                 := (findRE "^\\*hugolib\\.Page" $type) }}
+{{ $typeIsPage                 := (findRE "^(\\*hugolib\\.Page|.*hugolib\\.pageState)" $type) }}
 {{ $typeIsFileInfo             := (findRE "^\\*(hugolib|source)\\.[fF]ileInfo$" $type) }} <!-- terms pages for e.g. uses source.FileInfo, regular pages using hugolib.fileInfo -->
 {{ $typeIsMenuEntry            := (eq "*hugolib.MenuEntry" $type) }}
 {{ $typeIsOrderedTaxonomyEntry := (eq "hugolib.OrderedTaxonomyEntry" $type) }}
@@ -124,8 +124,8 @@
                 {{ end }}
             </table>
         {{ else if $typeIsPage }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/page.go -->
-            {{ $PageVarNames   := (slice "Name" "Title" "ResourceType" "Kind" "Section" "Draft" "Type" "Layout" "Permalink" "RelPermalink" "RSSLink" "Data") }}
-            {{ $PageVarSymbols := (slice .Name  .Title  .ResourceType  .Kind  .Section  .Draft  .Type  .Layout  .Permalink  .RelPermalink  .RSSLink  .Data ) }}
+            {{ $PageVarNames   := (slice "Name" "Title" "ResourceType" "Kind" "Section" "Draft" "Type" "Layout" "Permalink" "RelPermalink" "Data") }}
+            {{ $PageVarSymbols := (slice .Name  .Title  .ResourceType  .Kind  .Section  .Draft  .Type  .Layout  .Permalink  .RelPermalink  .Data ) }}
             <table class="debugprint">
                 <tr><th class="key">Page Variable</th><th class="value">Value</th></tr>
                 {{ range $idx, $elem := $PageVarNames }}

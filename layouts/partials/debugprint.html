@@ -196,13 +196,19 @@
     </div>
 {{ else if $typeIsSpecial }}
     {{ if $typeIsWeightedPage }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/taxonomy.go -->
-        <table>
-            {{ printf "<tr><td>%s</td><td>W:%d</td></tr>" .Page.Title .Weight | safeHTML }}
-        </table>
+        <div class="debugprint_wrap">
+            <table class="debugprint">
+                {{ printf "<tr><td>%s</td><td>W:%d</td></tr>" .Page.Title .Weight | safeHTML }}
+            </table>
+        </div>
     {{ end }}
     <!-- Anything Else -->
-{{ else }}
-    {{ printf "%#v (<i>type:%s</i>)" $value $type | safeHTML }}
+{{ else }}       
+     <div class="debugprint_wrap">
+        <table class="debugprint">
+            <tr><td>{{ printf "%#v (<i>type:%s</i>)" $value $type | safeHTML }}</td></tr>
+        </table>
+    </div>
 {{ end }}
 
 <!-- Older, simpler version -->

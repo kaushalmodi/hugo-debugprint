@@ -23,8 +23,8 @@
 {{ $typeIsNumber               := (or (eq "int" $type) (eq "int64" $type) (eq "float64" $type)) }}
 {{ $typeIsString               := (findRE "^(string|template\\.(CSS|HTML|HTMLAttr|JS|JSStr|URL))$" $type) }}
 {{ $typeIsTime                 := (eq "time.Time" $type) }}
-{{ $typeIsSlice                := (findRE "^([[][]]|.*TaxonomyList|output\\.Formats|resource\\.Resources|\\*?hugolib\\.Menu$|\\*?hugolib\\.Pages$|hugolib\\.OrderedTaxonomy$|hugolib\\.WeightedPages)" $type) }} <!-- match ^[] -->
-{{ $typeIsMap                  := (findRE "^(map[[].+[]]|.*SiteSocial|\\*hugolib\\.Menus|hugolib\\.AuthorList|hugolib\\.Taxonomy)" $type) }} <!-- match ^map[*] -->
+{{ $typeIsSlice                := (findRE "^([[][]]|.*TaxonomyList|output\\.Formats|resource\\.Resources|.*navigation\\.Menu$|\\*?hugolib\\.Pages$|hugolib\\.OrderedTaxonomy$|hugolib\\.WeightedPages)" $type) }} <!-- match ^[] -->
+{{ $typeIsMap                  := (findRE "^(map[[].+[]]|.*SiteSocial|.*navigation\\.Menus$|hugolib\\.AuthorList|hugolib\\.Taxonomy)" $type) }} <!-- match ^map[*] -->
 
 {{ $typeIsSiteInfo             := (eq "*hugolib.SiteInfo" $type) }}
 {{ $typeIsGitInfo              := (findRE "^.*gitmap\\.GitInfo" $type) }}
@@ -32,7 +32,7 @@
 {{ $typeIsResource             := (findRE "^\\*resource" $type) }}
 {{ $typeIsPage                 := (findRE "^(\\*hugolib\\.Page|.*hugolib\\.pageState)" $type) }}
 {{ $typeIsFileInfo             := (findRE "^\\*(hugolib|source)\\.[fF]ileInfo$" $type) }} <!-- terms pages for e.g. uses source.FileInfo, regular pages using hugolib.fileInfo -->
-{{ $typeIsMenuEntry            := (eq "*hugolib.MenuEntry" $type) }}
+{{ $typeIsMenuEntry            := (findRE "navigation\\.MenuEntry$" $type) }}
 {{ $typeIsOrderedTaxonomyEntry := (eq "hugolib.OrderedTaxonomyEntry" $type) }}
 {{ $typeIsWeightedPage         := (eq "hugolib.WeightedPage" $type) }}
 {{ $typeIsStruct               := (or $typeIsSiteInfo $typeIsGitInfo $typeIsOutputFormat $typeIsFileInfo $typeIsPage $typeIsMenuEntry $typeIsOrderedTaxonomyEntry) }}
@@ -155,8 +155,8 @@
                 {{ end }}
             </table>
         {{ else if $typeIsMenuEntry }} <!-- https://github.com/gohugoio/hugo/blob/master/hugolib/menu.go -->
-            {{ $MenuEntryVarNames   := (slice "Menu" "Title" "Name" "URL" "Identifier" "Weight" "Pre" "Post" "Parent" "Children") }}
-            {{ $MenuEntryVarSymbols := (slice .Menu  .Title  .Name  .URL  .Identifier  .Weight  .Pre  .Post  .Parent  .Children ) }}
+            {{ $MenuEntryVarNames   := (slice "ConfiguredURL" "Name" "Menu" "Identifier" "Title" "Pre" "Post" "Weight" "Parent" "Children") }}
+            {{ $MenuEntryVarSymbols := (slice .ConfiguredURL  .Name  .Menu  .Identifier  .Title  .Pre  .Post  .Weight  .Parent  .Children ) }}
             <table class="debugprint">
                 <tr><th class="key">MenuEntry Variable</th><th class="value">Value</th></tr>
                 {{ range $idx, $elem := $MenuEntryVarNames }}
@@ -203,7 +203,7 @@
         </div>
     {{ end }}
     <!-- Anything Else -->
-{{ else }}       
+{{ else }}
      <div class="debugprint_wrap">
         <table class="debugprint">
             <tr><td>{{ printf "%#v (<i>type:%s</i>)" $value $type | safeHTML }}</td></tr>

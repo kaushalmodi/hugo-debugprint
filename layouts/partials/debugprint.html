@@ -24,7 +24,7 @@
 {{ $typeIsString               := (findRE "^(string|template\\.(CSS|HTML|HTMLAttr|JS|JSStr|URL))$" $type) }}
 {{ $typeIsTime                 := (eq "time.Time" $type) }}
 {{ $typeIsSlice                := (findRE "^([[][]]|.*TaxonomyList|output\\.Formats|resource\\.Resources|.*navigation\\.Menu$|\\*?hugolib\\.Pages$|hugolib\\.OrderedTaxonomy$|hugolib\\.WeightedPages)" $type) }} <!-- match ^[] -->
-{{ $typeIsMap                  := (findRE "^(map[[].+[]]|.*SiteSocial|.*navigation\\.Menus$|hugolib\\.AuthorList|hugolib\\.Taxonomy)" $type) }} <!-- match ^map[*] -->
+{{ $typeIsMap                  := (findRE "^(map[[].+[]]|.*SiteSocial|.*navigation\\.Menus$|hugolib\\.AuthorList|hugolib\\.Taxonomy|maps\\.Params)" $type) }} <!-- match ^map[*] -->
 
 {{ $typeIsSiteInfo             := (eq "*hugolib.SiteInfo" $type) }}
 {{ $typeIsGitInfo              := (findRE "^.*gitmap\\.GitInfo" $type) }}

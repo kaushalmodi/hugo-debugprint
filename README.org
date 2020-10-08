@@ -17,6 +17,6 @@ This is not a standalone theme. This is a Hugo theme component or module.
    #+begin_example
    [module]
    [[module.imports]]
-   path = "module github.com/kaushalmodi/hugo-debugprint"
+   path = "github.com/kaushalmodi/hugo-debugprint"
    disabled = false
    #+end_example

@@ -1,8 +1,8 @@
 This is not a standalone theme. This is a Hugo theme component or module.
 
-## Usage
+* Usage
 
-### Install as repository below ~themes~
+** Install as repository below ~themes~
 
 1. Clone this repo to ~your-site/themes/hugo-debugprint~ directory.
 2. Add "hugo-debugprint" as the left-most element of the ~theme~ list variable
@@ -11,12 +11,12 @@ This is not a standalone theme. This is a Hugo theme component or module.
    theme = ["hugo-debugprint", "my-theme"]
    #+end_example
 
-### Install as Hugo module
+** Install as Hugo module
 
-1. Add the following code to your ~config.toml~
-   #+begin_example
-   [module]
-   [[module.imports]]
-   path = "github.com/kaushalmodi/hugo-debugprint"
-   disabled = false
-   #+end_example
+Add the following code to your ~config.toml~:
+#+begin_example
+[module]
+  [[module.imports]]
+    path = "github.com/kaushalmodi/hugo-debugprint"
+    disabled = false
+#+end_example

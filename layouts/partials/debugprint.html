@@ -4,6 +4,11 @@
      {{/* partial "debugprint.html" .Params */}}
      {{/* partial "debugprint.html" site */}}
      {{/* partial "debugprint.html" site.Menus */}}
+     {{/* if .GitInfo */}}
+        {{/* partial "debugprint.html" .GitInfo */}}
+     {{/* else */}}
+       {{/* warnf "No GitInfo for %s, has it not been added to the repo?" .*/}}
+     {{/* end */}}
      {{/* partial "debugprint.html" .GitInfo */}}
      {{/* partial "debugprint.html" .Resources */}}
      {{/* partial "debugprint.html" .File */}}
